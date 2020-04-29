@@ -97,28 +97,20 @@ public class TaxiCompany
     }
     
     /**
-     * Set up this company's vehicles. The optimum number of
-     * vehicles should be determined by analysis of the
-     * data gathered from the simulation.
-     *
-     * Vehicles start at random locations.
+     * add a vehicle to the vehicle list
+     * @param vehicle the vehicle to be added
      */
-    private void setupVehicles()
-    {
-        int cityWidth = city.getWidth();
-        int cityHeight = city.getHeight();
-        // Used a fixed random seed for predictable behavior.
-        // Use different seeds for less predictable behavior.
-        Random rand = new Random(12345);
+    public void addVehicles(Vehicle vehicle) {
+        vehicles.add(vehicle);
+    }
 
-        // Create the taxis.
-        for(int i = 0; i < NUMBER_OF_TAXIS; i++){
-            Taxi taxi =
-                new Taxi(this,
-                         new Location(rand.nextInt(cityWidth),
-                                      rand.nextInt(cityHeight)));
-            vehicles.add(taxi);
-            city.addItem(taxi);
-        }
-   }
+    /**
+     * remove a vehicle from the vehicle list
+     * @param vehicle the vehicle to be removed
+     */
+    public void removeVehicle(Vehicle vehicle) {
+        vehicles.remove(vehicle);
+    }
+}
+    
 }
