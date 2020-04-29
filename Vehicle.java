@@ -1,3 +1,4 @@
+import java.util.UUID;
 /**
  * Model the common elements of taxis and shuttles.
  * 
@@ -13,6 +14,8 @@ public abstract class Vehicle implements Actor
     private Location targetLocation;
     // Record how often the vehicle has nothing to do.
     private int idleCount;
+    
+    protected UUID currentBookingRef;
     
     /**
      * Constructor of class Vehicle
@@ -32,6 +35,7 @@ public abstract class Vehicle implements Actor
         this.location = location;
         targetLocation = null;
         idleCount = 0;
+        currentBookingRef = null;
     }
     
     /**
@@ -51,6 +55,11 @@ public abstract class Vehicle implements Actor
         company.arrivedAtDestination(this, passenger);
     }
     
+    public abstract void setBookingRef(UUID bookingRef);
+    
+    public abstract UUID getBookingRef();
+     
+     
     /**
      * Receive a pickup location.
      * How this is handled depends on the type of vehicle.

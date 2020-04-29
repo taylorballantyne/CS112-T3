@@ -1,3 +1,4 @@
+import java.util.UUID;
 /**
  * A taxi is able to carry a single passenger.
  * 
@@ -45,6 +46,17 @@ public class Taxi extends Vehicle
         }
     }
 
+    public void setBookingRef(UUID bookingRef)
+    {
+        currentBookingRef = bookingRef;
+    }
+    
+    public UUID getBookingRef()
+    {
+        return currentBookingRef;
+    }
+    
+    
     /**
      * Is the taxi free?
      * @return Whether or not this taxi is free.
