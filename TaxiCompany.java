@@ -95,4 +95,22 @@ public class TaxiCompany
         }
         return null;
     }
+    
+    /**
+     * add a vehicle to the vehicle list
+     * @param vehicle the vehicle to be added
+     */
+    public void addVehicles(Vehicle vehicle) {
+        vehicles.add(vehicle);
+    }
+
+    /**
+     * remove a vehicle from the vehicle list
+     * @param vehicle the vehicle to be removed
+     */
+    public void removeVehicle(Vehicle vehicle) {
+        vehicles.remove(vehicle);
+    }
+}
+    
 }
