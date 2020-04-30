@@ -1,8 +1,9 @@
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Model the operation of a taxi company, operating different
@@ -17,7 +18,7 @@ public class TaxiCompany
     private List<Vehicle> vehicles;
     // The associations between vehicles and the passengers
     // they are to pick up.
-    private Map<Vehicle, Passenger> assignments;
+    private HashMap<UUID, HashMap> bookings;
 
     /**
      * Constructor for objects of class TaxiCompany
@@ -25,7 +26,7 @@ public class TaxiCompany
     public TaxiCompany()
     {
         vehicles = new LinkedList<>();
-        assignments = new HashMap<>();
+        bookings = new HashMap<>();
     }
 
     /**
@@ -37,8 +38,23 @@ public class TaxiCompany
     {
         Vehicle vehicle = scheduleVehicle();
         if(vehicle != null) {
-            assignments.put(vehicle, passenger);
-            vehicle.setPickupLocation(passenger.getPickupLocation());
+            UUID bookingRef = null;
+            boolean unique = false;
+            while (unique == false){
+                bookingRef = UUID.randomUUID();
+                if (!(bookings.containsKey(bookingRef))){
+                    unique = true; 
+            }
+            }     
+            if (bookingRef == null);
+            {
+                //throw exception
+            }
+            vehicle.setBookingRef(bookingRef);
+            HashMap<Vehicle, Passenger> assignment = new HashMap<>();
+            assignment.put(vehicle, passenger);
+            bookings.put(bookingRef, assignment);
+            vehicle.setPickupLocation(passenger.getPickupLocation()); 
             return true;
         }
         else {
@@ -53,7 +69,12 @@ public class TaxiCompany
      */
     public void arrivedAtPickup(Vehicle vehicle)
     {
-        Passenger passenger = assignments.remove(vehicle);
+        UUID bookingRef = vehicle.getBookingRef();
+        HashMap<Vehicle, Passenger> assignment = null;
+        if (bookings.containsKey(bookingRef)){
+            assignment = bookings.get(bookingRef);
+        }
+        Passenger passenger = assignment.get(vehicle);
         if(passenger == null) {
             throw new MissingPassengerException(vehicle);
         }

@@ -1,3 +1,4 @@
+import java.util.UUID;
 import java.util.List;
 import java.util.LinkedList;
     
@@ -33,7 +34,15 @@ public class Shuttle extends Vehicle
     public void act()
     {
     }
-
+    
+    public void setBookingRef(UUID bookingRef)
+    {
+    }
+    
+    public UUID getBookingRef()
+    {
+        return currentBookingRef;
+    }
     /**
      * Is the shuttle free?
      * @return Whether or not this vehicle is free.
