@@ -1,9 +1,9 @@
-import java.util.UUID;
 import java.util.List;
 import java.util.LinkedList;
     
 /**
  * A shuttle is able to carry multiple passengers.
+ * This implementation is non-functional.
  * 
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29
@@ -34,15 +34,7 @@ public class Shuttle extends Vehicle
     public void act()
     {
     }
-    
-    public void setBookingRef(UUID bookingRef)
-    {
-    }
-    
-    public UUID getBookingRef()
-    {
-        return currentBookingRef;
-    }
+
     /**
      * Is the shuttle free?
      * @return Whether or not this vehicle is free.
