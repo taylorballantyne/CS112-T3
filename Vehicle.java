@@ -139,8 +139,7 @@ public abstract class Vehicle implements Actor
     /**
      * @return On how many steps this vehicle has been idle.
      */
-    public int getIdleCount()
-    {
+    public int getIdleCount(){
         return idleCount;
     }
 
@@ -157,5 +156,12 @@ public abstract class Vehicle implements Actor
      */
     public void incrementMoveCount() {
         movingCount++;
+    }
+
+    /**
+     * @return On how many steps this vehicle has been idle.
+     */
+    public int getMovingCount(){
+        return movingCount;
     }
 }
