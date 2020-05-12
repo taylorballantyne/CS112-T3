@@ -42,6 +42,9 @@ public class TaxiCompany
     public boolean requestPickup(Passenger passenger)
     {
         Vehicle vehicle = scheduleVehicle();
+        if (vehicle.getTargetLocation() != null) {
+            throw new InTransitException(vehicle);
+        }
         if(vehicle != null) {
             assignments.put(vehicle, passenger);
             vehicle.setPickupLocation(passenger.getPickupLocation());

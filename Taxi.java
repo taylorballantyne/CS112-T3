@@ -1,4 +1,3 @@
-//Moving Vehicle Count changes implemented by Heather
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
