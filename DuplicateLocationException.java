@@ -1,6 +1,6 @@
 
 /**
- * Indicate that there was no passenger at a pickup point.
+ * Indicate that there is a passenger that has the same destination as the pickup location.
  * 
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29
