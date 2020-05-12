@@ -1,3 +1,4 @@
+//Moving Vehicle Count changes implemented by Fatima B
 /**
  * Model the common elements of taxis and shuttles.
  * 
@@ -13,6 +14,8 @@ public abstract class Vehicle implements Actor
     private Location targetLocation;
     // Record how often the vehicle has nothing to do.
     private int idleCount;
+    // Record how often the vehicle has something to do.
+    private int movingCount;
     
     /**
      * Constructor of class Vehicle
@@ -32,13 +35,13 @@ public abstract class Vehicle implements Actor
         this.location = location;
         targetLocation = null;
         idleCount = 0;
+        movingCount = 0;
     }
     
     /**
      * Notify the company of our arrival at a pickup location.
      */
-    public void notifyPickupArrival()
-    {
+    public void notifyPickupArrival() {
         company.arrivedAtPickup(this);
     }
     
@@ -136,17 +139,29 @@ public abstract class Vehicle implements Actor
     /**
      * @return On how many steps this vehicle has been idle.
      */
-    public int getIdleCount()
-    {
+    public int getIdleCount(){
         return idleCount;
     }
-    
+
     /**
      * Increment the number of steps on which this vehicle
      * has been idle.
      */
-    public void incrementIdleCount()
-    {
+    public void incrementIdleCount() {
         idleCount++;
+    }
+    /**
+     * Increment the number of steps on which this vehicle
+     * has soemthing to do.
+     */
+    public void incrementMoveCount() {
+        movingCount++;
+    }
+
+    /**
+     * @return On how many steps this vehicle has been idle.
+     */
+    public int getMovingCount(){
+        return movingCount;
     }
 }

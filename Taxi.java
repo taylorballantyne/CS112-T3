@@ -35,13 +35,14 @@ public class Taxi extends Vehicle implements DrawableItem
      * Move towards the target location if we have one.
      * Otherwise record that we are idle.
      */
-    public void act()
-    {
+    public void act() {
         Location target = getTargetLocation();
         if(target != null) {
+
             // Find where to move to next.
             Location next = getLocation().nextLocation(target);
             setLocation(next);
+            incrementMoveCount();
             if(next.equals(target)) {
                 if(passenger != null) {
                     notifyPassengerArrival(passenger);
@@ -54,15 +55,14 @@ public class Taxi extends Vehicle implements DrawableItem
         }
         else {
             incrementIdleCount();
-        }
+    }
     }
 
     /**
      * Is the taxi free?
      * @return Whether or not this taxi is free.
      */
-    public boolean isFree()
-    {
+    public boolean isFree() {
         return getTargetLocation() == null && passenger == null;
     }
     
@@ -71,8 +71,7 @@ public class Taxi extends Vehicle implements DrawableItem
      * target location.
      * @param location The pickup location.
      */
-    public void setPickupLocation(Location location)
-    {
+    public void setPickupLocation(Location location) {
         setTargetLocation(location);
     }
     
